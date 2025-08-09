@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <title>HomePage</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #0f0f1e, #1b1b3a, #3a2a7a);
+        color: #f0f0f0;
+        font-family: 'Poppins', sans-serif;
+        min-height: 100vh;
+      }
+
+      /* Card styling */
+      .card {
+        background: linear-gradient(145deg, rgba(25, 25, 50, 0.95), rgba(40, 40, 70, 0.95));
+        border: 1px solid rgba(0, 255, 200, 0.15);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0, 255, 200, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 0 25px rgba(0, 255, 200, 0.4);
+      }
+
+      /* Card image */
+      .card-img-top {
+        height: 180px;
+        object-fit: cover;
+      }
+
+      /* Card title without glow */
+      .card-title {
+        color: #00ffc3;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-shadow: none;
+      }
+
+      /* View button */
+      .btn-primary {
+        background: linear-gradient(135deg, #00ffc3, #00d9a5);
+        border: none;
+        color: #000;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #00d9a5, #00ffc3);
+        box-shadow: 0 0 12px #00ffc3;
+      }
+    </style>
+</head>
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="container mt-4">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <% blogs.forEach(blog => { %>
+        <div class="col">
+          <div class="card">
+            <img src="<%= blog.coverImageURL %>" class="card-img-top" />
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title %></h5>
+              <a href="/blog/<%= blog.id %>" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <%- include('partials/scripts') %>
+</body>
+</html>

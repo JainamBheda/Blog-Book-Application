@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <title>Sign Up</title>
+    <style>
+      body {
+        background: #000000;
+        color: #f0f0f0;
+        font-family: 'Poppins', sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .main-content {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-container {
+        background: rgba(15, 15, 15, 0.8);
+        backdrop-filter: blur(12px);
+        padding: 2rem;
+        border-radius: 16px;
+        border: 1px solid rgba(0, 255, 200, 0.2);
+        box-shadow: 0 0 20px rgba(0, 255, 200, 0.15);
+        width: 100%;
+        max-width: 400px;
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      .form-label {
+        color: #00ffc3;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      .form-control {
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(0, 255, 200, 0.3);
+        color: #f0f0f0 !important;
+        border-radius: 8px;
+        padding: 0.6rem;
+        transition: all 0.3s ease;
+      }
+      .form-control:focus {
+        outline: none;
+        border-color: #00ffc3;
+        box-shadow: 0 0 10px #00ffc3;
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      /* Placeholder text color */
+      .form-control::placeholder {
+        color: rgba(240, 240, 240, 0.6);
+      }
+
+      /* Autofill fix for Chrome/Edge */
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.6) inset;
+        -webkit-text-fill-color: #f0f0f0 !important;
+      }
+
+      /* Ensure password dots are light */
+      input[type="password"] {
+        color: #f0f0f0 !important;
+      }
+
+      .form-text {
+        color: #bbb;
+        font-size: 0.85rem;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #00ffc3, #ff00ff);
+        border: none;
+        color: #000;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 0.6rem 1.2rem;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #ff00ff, #00ffc3);
+        box-shadow: 0 0 15px #00ffc3, 0 0 25px #ff00ff;
+        transform: scale(1.02);
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+</head>
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="main-content">
+      <div class="form-container">
+        <form action="/user/signup" method="POST">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter your email">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="fullnameInput" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullnameInput" name="fullname" aria-describedby="nameHelp" placeholder="JOHN DOE">
+            <div id="nameHelp" class="form-text">In CAPS</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="••••••••">
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <%- include('partials/scripts') %>
+</body>
+</html>
